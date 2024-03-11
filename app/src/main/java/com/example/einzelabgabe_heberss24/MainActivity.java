@@ -82,9 +82,47 @@ public class MainActivity extends AppCompatActivity {
      */
     public String primeNumber(String s) {
 
+        int number = Integer.parseInt(s);
+        String result = "";
+        String orderedResult = "";
+        char ch;
+        boolean isPrime = true;
+        int digit;
+        String response;
+
+        while(number != 0) {
+            digit = number % 10;
+            if(digit <= 1) {
+                isPrime = false;
+            }
+            else {
+                if (digit == 2) {
+                    isPrime = true;
+                }
+                else {
+                    for (int i = 2; i < digit ; i++) {
+                        if (digit % i == 0) {
+                            isPrime = false;
+                        }
+                    }
+                }
+            }
+            if (isPrime) {
+                result += digit + " ";
+            }
+            number = number/10;
+            isPrime = true;
+        }
+
+        for (int i = 0; i < result.length(); i++) {
+            ch = result.charAt(i);
+            orderedResult = ch + orderedResult;
+        }
+
+        response = "Die Primzahl/Primzahlen ist/sind: " + orderedResult;
 
 
-        return null;
+        return response;
 
     }
 }
